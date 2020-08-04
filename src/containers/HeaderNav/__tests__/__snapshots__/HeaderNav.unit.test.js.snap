@@ -10,19 +10,24 @@ exports[`HeaderNav renders 1`] = `
     className="logo"
     header={true}
   >
-    <Icon
-      as="i"
-      className="header-icon"
-      name="list ul"
-      size="large"
-    />
-    <Image
-      as="img"
-      className="right"
-      size="tiny"
-      src="logo.png"
-      ui={true}
-    />
+    <Link
+      className="logo-link"
+      to="/"
+    >
+      <Icon
+        as="i"
+        className="header-icon"
+        name="list ul"
+        size="large"
+      />
+      <Image
+        as="img"
+        className="right"
+        size="tiny"
+        src="logo.png"
+        ui={true}
+      />
+    </Link>
   </MenuItem>
   <MenuMenu
     className="nav-container"
