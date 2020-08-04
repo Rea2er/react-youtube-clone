@@ -8,7 +8,8 @@ class HeaderNav extends Component {
     return (
       <Menu borderless className="top-menu" fixed="top">
         <Menu.Item header className="logo">
-          <Image src={logo} size="tiny" />
+          <Icon className="header-icon" name="list ul" size="large" />
+          <Image className="right" src={logo} size="tiny" />
         </Menu.Item>
         <Menu.Menu className="nav-container">
           <Menu.Item className="search-input">

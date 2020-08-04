@@ -6,8 +6,19 @@
   overflow-y: auto;
   padding-bottom: $header-nav-height;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar {
+      display: block;
+    }
+  }
+
   .sidebar-item:hover {
     background: #ebebeb;
+    cursor: pointer;
   }
 }
 

@@ -5,6 +5,10 @@
 
   .logo {
     width: $sidebar-left-width;
+
+    .right {
+      margin-left: 15px;
+    }
   }
 
   .nav-container {

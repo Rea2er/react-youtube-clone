@@ -5,10 +5,10 @@ import SideBar from "./containers/SideBar/SideBar";
 
 function App() {
   return (
-    <React.Fragment>
+    <>
       <HeaderNav />
       <SideBar />
-    </React.Fragment>
+    </>
   );
 }
 
