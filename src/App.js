@@ -1,7 +1,9 @@
 import React from "react";
 
+import HeaderNav from "./containers/HeaderNav/HeaderNav";
+
 function App() {
-  return <div>Hello World</div>;
+  return <HeaderNav />;
 }
 
 export default App;
