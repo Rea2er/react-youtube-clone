@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
 import { Image, Menu, Form, Input, Icon } from "semantic-ui-react";
-
 import logo from "../../assets/images/logo.png";
 import "./HeaderNav.scss";
 
