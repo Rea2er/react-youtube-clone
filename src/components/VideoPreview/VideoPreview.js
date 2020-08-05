@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { Image } from "semantic-ui-react";
 import "./VideoPreview.scss";
+import { getShortNumberString } from "../../services/number/number-format";
+import { getVideoDurationString } from "../../services/date/date-format";
+
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+
+TimeAgo.locale(en);
+const timeAgo = new TimeAgo("en-US");
 
 class VideoPreview extends Component {
   render() {
@@ -8,6 +16,12 @@ class VideoPreview extends Component {
     if (!video) {
       return <div />;
     }
+
+    const duration = video.contentDetails
+      ? video.contentDetails.duration
+      : null;
+    const videoDuration = getVideoDurationString(duration);
+    const viewAndTimeString = VideoPreview.getFormattedViewAndTime(video);
     const horizontal = this.props.horizontal ? "horizontal" : null;
 
     return (
@@ -15,7 +29,7 @@ class VideoPreview extends Component {
         <div className="image-container">
           <Image src={video.snippet.thumbnails.medium.url} />
           <div className="time-label">
-            <span>{video.contentDetails.duration}</span>
+            <span>{videoDuration}</span>
           </div>
         </div>
 
@@ -26,14 +40,22 @@ class VideoPreview extends Component {
           <div className="video-preview-metadata-container">
             <div className="channel-title">{video.snippet.channelTitle}</div>
             <div>
-              <span>
-                {video.statistics.viewCount} views • {video.snippet.publishedAt}
-              </span>
+              <span>{viewAndTimeString}</span>
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  static getFormattedViewAndTime(video) {
+    const publicationDate = new Date(video.snippet.publishedAt);
+    const viewCount = video.statistics ? video.statistics.viewCount : null;
+    if (viewCount) {
+      const viewCountShort = getShortNumberString(video.statistics.viewCount);
+      return `${viewCountShort} views • ${timeAgo.format(publicationDate)}`;
+    }
+    return "";
   }
 }
 
